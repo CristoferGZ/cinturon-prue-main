@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Agendación de Fechas</title>
+</head>
+<body>
+    <h1>Agendación de Fechas</h1>
+    <form action="/add" method="post">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="date">Fecha:</label>
+        <input type="date" id="date" name="date" required><br><br>
+        <label for="status">Estado:</label>
+        <input type="text" id="status" name="status" required><br><br>
+        <input type="submit" value="Agregar">
+    </form>
+    <h2>Eventos Agendados:</h2>
+    <ul>
+        {% for event in events %}
+        <li>{{ event.name }} - {{ event.date }} - {{ event.status }} <a href="/delete/{{ loop.index0 }}">Eliminar</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
